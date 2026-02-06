@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #222;
+}
+.main{
+    height: 100%;
+    width: 100%;
+    background-color: #222;
+}
+.lt{
+    text-decoration: line-through;
+    color: white;
+}
+.a{
+    width: 80%;
+    height: 80%;
+    background-color: aliceblue;
+}
+.b{
+    width: 80%;
+    height: 80%;
+    background-color: rgb(3, 38, 70);
+}
+.c{
+    width: 80%;
+    height: 80%;
+    background-color: rgb(93, 96, 99);
+}
