@@ -110,56 +110,100 @@ const users = [
     }
 ];
 
-const showUsers = (arr) => {
-    arr.forEach((user)=>{
-        // 1. Create the main card container
-    const card = document.createElement('div');
-    card.classList.add('card');
+// const showUsers = (arr) => {
+//     arr.forEach((user)=>{
+//         // 1. Create the main card container
+//     const card = document.createElement('div');
+//     card.classList.add('card');
 
-    // 2. Create the image element
-    const img = document.createElement('img');
-    img.src = user.pic; 
-    img.classList.add('bg-img');
+//     // 2. Create the image element
+//     const img = document.createElement('img');
+//     img.src = user.pic; 
+//     img.classList.add('bg-img');
 
-    // 3. Create the blurred layer
-    const blurredLayer = document.createElement('div');
-    blurredLayer.classList.add('blurred-layer');
-    // Important: The blur layer needs the same background image for the effect to work
-    blurredLayer.style.backgroundImage = `url(${user.pic})`; 
+//     // 3. Create the blurred layer
+//     const blurredLayer = document.createElement('div');
+//     blurredLayer.classList.add('blurred-layer');
+//     // Important: The blur layer needs the same background image for the effect to work
+//     blurredLayer.style.backgroundImage = `url(${user.pic})`; 
 
-    // 4. Create the content container
-    const content = document.createElement('div');
-    content.classList.add('content');
+//     // 4. Create the content container
+//     const content = document.createElement('div');
+//     content.classList.add('content');
 
-    // 5. Create the text elements (Name and Bio)
-    const h3 = document.createElement('h3');
-    h3.textContent = user.name;
+//     // 5. Create the text elements (Name and Bio)
+//     const h3 = document.createElement('h3');
+//     h3.textContent = user.name;
 
-    const p = document.createElement('p');
-    p.textContent = user.bio;
+//     const p = document.createElement('p');
+//     p.textContent = user.bio;
 
-    // 6. Append text to content container
-    content.appendChild(h3);
-    content.appendChild(p);
+//     // 6. Append text to content container
+//     content.appendChild(h3);
+//     content.appendChild(p);
 
-    // 7. Append everything to the card
-    card.appendChild(img);
-    card.appendChild(blurredLayer);
-    card.appendChild(content);
+//     // 7. Append everything to the card
+//     card.appendChild(img);
+//     card.appendChild(blurredLayer);
+//     card.appendChild(content);
 
-    // document.body.appendChild(card);
-    document.querySelector(".cards").appendChild(card);
-    })
+//     // document.body.appendChild(card);
+//     document.querySelector(".cards").appendChild(card);
+//     })
+// }
+// showUsers(users)    
+
+// let input = document.querySelector(".inp")
+// input.addEventListener("input",(e)=>{
+//     // console.log(input.value)
+//     let newUsers = users.filter((user) => {
+//         return user.name.startsWith(input.value);
+//     });
+//     console.log(newUsers)
+//     document.querySelector(".cards").innerHTML = "";
+//     showUsers(newUsers) 
+// });
+// Cache DOM (important optimization)
+const cardsContainer = document.querySelector(".cards");
+const input = document.querySelector(".inp");
+
+
+// Single fast render function
+function showUsers(list) {
+  cardsContainer.innerHTML = list.map(user => `
+    <div class="card">
+      <img src="${user.pic}" class="bg-img">
+
+      <div class="blurred-layer" 
+           style="background-image:url('${user.pic}')">
+      </div>
+
+      <div class="content">
+        <h3>${user.name}</h3>
+        <p>${user.bio}</p>
+      </div>
+    </div>
+  `).join("");
 }
-showUsers(users)    
 
-let input = document.querySelector(".inp")
-input.addEventListener("input",(e)=>{
-    // console.log(input.value)
-    let newUsers = users.filter((user) => {
-        return user.name.startsWith(input.value);
-    });
-    console.log(newUsers)
-    document.querySelector(".cards").innerHTML = "";
-    showUsers(newUsers) 
+
+// Initial render
+showUsers(users);
+
+
+// Optimized search with debounce (pro feature)
+let debounceTimer;
+
+input.addEventListener("input", () => {
+  clearTimeout(debounceTimer);
+
+  debounceTimer = setTimeout(() => {
+    const value = input.value.toLowerCase();
+
+    const filteredUsers = users.filter(user =>
+      user.name.toLowerCase().includes(value)
+    );
+
+    showUsers(filteredUsers);
+  }, 150);
 });

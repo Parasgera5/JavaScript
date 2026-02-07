@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Stack App</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="main">
+        <div class="left">
+            <div class="btns">
+                <div class="btn" id="add-btn"><i class="ri-add-line"></i></div>
+                <div class="btn" id="up-btn"><i class="ri-arrow-up-line"></i></div>
+                <div class="btn" id="down-btn"><i class="ri-arrow-down-line"></i></div>
+            </div>
+        </div>
+
+        <div class="center">
+            <div class="stack-container" id="stack">
+                </div>
+        </div>
+
+        <div class="right">
+            <div class="filters">
+                <div class="filter-btn" data-filter="all" style="border: 2px solid #fff;">All</div>
+                <div class="filter-btn Emergency" data-filter="Emergency"></div>
+                <div class="filter-btn Urgent" data-filter="Urgent"></div>
+                <div class="filter-btn Important" data-filter="Important"></div>
+                <div class="filter-btn No-Rush" data-filter="No Rush"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form id="call-form">
+            <div class="close-form"><i class="ri-close-line"></i></div>
+            <h2>New Call</h2>
+            
+            <div class="input-group">
+                <label>Image URL</label>
+                <input type="text" id="img-url" placeholder="https://..." required>
+            </div>
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="name" placeholder="Enter full name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Home Town</label>
+                <input type="text" id="hometown" placeholder="Enter home town" required>
+            </div>
+
+            <div class="input-group">
+                <label>Purpose</label>
+                <input type="text" id="purpose" placeholder="e.g., Quick appointment" required>
+            </div>
+
+            <div class="category-group">
+                <label>Category</label>
+                <div class="radio-options">
+                    <div><input type="radio" name="category" value="Emergency" required> Emergency (Black)</div>
+                    <div><input type="radio" name="category" value="Urgent"> Urgent (Purple)</div>
+                    <div><input type="radio" name="category" value="Important"> Important (Brown)</div>
+                    <div><input type="radio" name="category" value="No Rush"> No Rush (Teal)</div>
+                </div>
+            </div>
+
+            <button type="submit" class="create-btn">Create Note</button>
+            <button type="button" class="close-btn-bottom">Close</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
