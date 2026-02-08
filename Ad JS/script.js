@@ -51,12 +51,84 @@
 //     }
 // }
 
-let a = 12;
-function x() {
-    console.log(a); // 12
+// let a = 12;
+// function x() {
+//     console.log(a); // 12
+// }
+// function y() {
+//     let a = 20;
+//     x(); // 12
+// }
+// y(); // 12 kyuki lexically scoped hai js dynamialy hoti toh y function mein jo value hai a ki wo global variable a ki value ko override kar deti aur x function mein 20 print hota, lekin kyuki js lexically scoped hai toh x function mein global variable a ki value print hoti hai, jo ki 12 hai.
+
+
+
+
+// Closures hote hai function jo kisi parent function ke andar ho aur andar wala function return ho raha ho, and wo andar wala returning function use kare koi parent function ka variable.
+// toh us case mein wo inner function closure kehlata hai. closures ke through hum private variables create kar sakte hain, jise hum bahar se access nahi kar sakte hain, lekin inner function ke through access kar sakte hain. closures ke through hum data encapsulation achieve kar sakte hain, jismein hum apne data ko hide kar sakte hain, aur sirf inner function ke through access kar sakte hain. closures ke through hum apne code ko modular bana sakte hain, jismein hum apne code ko chhote chhote functions mein divide kar sakte hain, aur unhe reuse kar sakte hain.
+// advantages of closures:
+// 1. Data Encapsulation: Closures allow us to encapsulate data and create private variables that cannot be accessed from outside the function. This helps in protecting the data from unauthorized access and modification.
+// 2. Modular Code: Closures enable us to write modular code by allowing us to break down our code into smaller functions that can be reused across different parts of our application.
+// 3. Memory Efficiency: Closures can help in improving memory efficiency by allowing us to create functions that can access variables from their parent scope without having to create new variables for each function call.
+// 4. stop global pollution => main global space ko pollute hone se bachata hai, kyunki closures ke through hum apne variables ko private bana sakte hain, aur unhe global scope mein define nahi karna padta hai.
+
+// function ke khatam hone pe uske variables khatam ho jaate hai, par jab bhi closure banta hai toh us function and uske variables ka ek backlink banaya jata hai aur uska naam hota hai [[environment]]
+
+
+
+
+// function outer() {
+//     let count = 0; // private variable
+//     function inner() { // closure
+//         count++;
+//         console.log(count);
+//     }
+//     return inner;
+// }
+// dono hi thik hai
+// function outer() {
+//     let count = 0; // private variable
+//     return function inner() { // closure
+//         count++;
+//         console.log(count);
+//     }
+// }
+// const counter = outer();
+// counter(); // 1
+// counter(); // 2
+// counter(); // 3
+// const counter2 = outer();
+// counter2(); // 1
+// counter2(); // 2
+// counter2(); // 3
+// counter2(); // 4
+
+
+
+// encapsulation -> keval unhi chezon ka access dena jinki need hai baaki chupa lena.
+function clickLimiter() {
+    let click = 0;
+    return () => {
+        if (click < 5) {
+            click++;
+            console.log(`clicked: ${click} times`);
+        }
+        else console.error("click limit exceeded");
+    }
 }
-function y() {
-    let a = 20;
-    x(); // 12
-}
-y(); // 12 kyuki lexically scoped hai js dynamialy hoti toh y function mein jo value hai a ki wo global variable a ki value ko override kar deti aur x function mein 20 print hota, lekin kyuki js lexically scoped hai toh x function mein global variable a ki value print hoti hai, jo ki 12 hai.
+// clickLimiter()(); // clicked: 1 times
+// clickLimiter()(); // clicked: 1 times
+// clickLimiter()(); // clicked: 1 times
+// clickLimiter()(); // clicked: 1 times
+// clickLimiter()(); // clicked: 1 times
+let clicks = clickLimiter();
+clicks(); // clicked: 1 times
+clicks(); // clicked: 2 times
+clicks(); // clicked: 3 times
+clicks(); // clicked: 4 times
+clicks(); // clicked: 5 times
+clicks(); // click limit exceeded
+clicks(); // click limit exceeded
+click = 0;
+console.log(click); // 0
+clicks(); // click limit exceeded -> ye jo humne click 0 kiya hai ye us function wale click ko change nahi karega. toh wo click inside function wala encapsulated hai toh ye encapsulation mein bhi use hota hai.
