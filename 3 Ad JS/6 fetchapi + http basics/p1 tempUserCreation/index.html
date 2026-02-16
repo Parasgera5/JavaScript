@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind Card Layout</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+
+    <div class="bg-gray-800 rounded-lg shadow-lg p-6 max-w-md w-full text-white">
+        <h2 class="text-2xl font-bold mb-4">Welcome</h2>
+        <p class="text-gray-300 mb-4">
+            This is a centered card using Tailwind CSS.
+        </p>
+        <div class="users space-y-4"></div>
+        <button 
+        id="refreshBtn"
+        class="flex items-center gap-2 px-6 py-3 bg-gray-800 text-gray-200 rounded-lg shadow-lg hover:bg-gray-700 transition"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-7 w-7" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M4 4v6h6M20 20v-6h-6M5 19a9 9 0 0 1 14-14"
+          />
+        </svg>
+        Refresh
+      </button>
+      
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
