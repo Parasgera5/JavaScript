@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.spacer {
+    height: 600px;
+}
+
+img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img.loaded {
+    opacity: 1;
+}
