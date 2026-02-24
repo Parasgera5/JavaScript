@@ -17,4 +17,4 @@ let ans = myMap(array, function (value, index, array){
 });
 console.log(ans)
 
-// deep clone
+// deep clone - different file named deep copy and shallow copy.
