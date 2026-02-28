@@ -1,15 +1,65 @@
+let tasksData = {};
+
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
 let dragElement = null;
 
-const tasks = document.querySelectorAll(".task");
-tasks.forEach((task) => {
-    task.addEventListener("drag", (e) => {
-        console.log("dragging", e);
-        dragElement = task;
+const columns = [todo, progress, done];
+
+const addTask = (title, desc, column) => {
+    const div = document.createElement("div");
+    div.classList.add("task");
+    div.setAttribute("draggable", "true");
+    div.innerHTML = `
+        <h2>${title}</h2>
+        <p>${desc}</p>
+        <button>Delete</button>
+    `;
+    column.appendChild(div);
+    div.addEventListener("drag", (e) => {
+        dragElement = div;
     })
-})
+    
+    const deleteButton = div.querySelector("button");
+    deleteButton.addEventListener("click", () => {
+        div.remove();
+        updateTaskCount();
+    })
+
+    return div;
+}
+
+const updateTaskCount = () => {
+    columns.forEach((col) => {
+        const tasks = col.querySelectorAll(".task");
+        const count = col.querySelector(".right");
+
+        tasksData[col.id] = Array.from(tasks).map(t => {
+            return {
+                title: t.querySelector("h2").innerText,
+                desc: t.querySelector("p").innerText
+            }
+        })
+        localStorage.setItem("tasks", JSON.stringify(tasksData));
+        console.log(tasksData);
+        count.innerText = tasks.length;
+    })
+}
+
+if (localStorage.getItem("tasks")) {
+    const data = JSON.parse(localStorage.getItem("tasks"));
+    console.log(data);
+    for (const col in data) {
+        // console.log(col, data[col]);
+        const column = document.querySelector(`#${col}`);
+        data[col].forEach(task => {
+            addTask(task.title, task.desc, column);
+        })
+    }
+    updateTaskCount();
+}
+
 // progress.addEventListener("dragenter", (e) => {
 //     progress.classList.add("hover-over");
 // })
@@ -46,6 +96,9 @@ const addDragEventsOnColumn = (column) => {
         console.log("dropped", dragElement, column);
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
+
+        updateTaskCount();
+
     })
 }
 addDragEventsOnColumn(todo);
@@ -68,78 +121,12 @@ modelbg.addEventListener("click", () => {
 addTaskButton.addEventListener("click", () => {
     const taskTitle = document.querySelector("#task-title-input").value;
     const taskDesc = document.querySelector("#task-desc-input").value;
-    // const tempelate = `<div draggable="true" class="task">
-    //                 <h2>${taskTitle}</h2>
-    //                 <p>${taskDesc} 1</p>
-    //                 <button>delete</button>
-    //             </div>`
-    //             todo.appendChild(tempelate);
 
-    const div = document.createElement("div");
-    div.classList.add("task");
-    div.setAttribute("draggable", "true");
-    div.innerHTML = `
-        <h2>${taskTitle}</h2>
-        <p>${taskDesc}</p>
-        <button>Delete</button>
-    `;
-    todo.appendChild(div);
-    div.addEventListener("drag", (e) => {
-        dragElement = div;
-    })
+    addTask(taskTitle, taskDesc, todo);
+    updateTaskCount();
     model.classList.remove("active");
+    document.querySelector("#task-title-input").value = "";
+    document.querySelector("#task-desc-input").value = "";
 })
 
 // model related logic
-
-
-
-
-// const todo = document.querySelector("#todo");
-// const progress = document.querySelector("#progress");
-// const done = document.querySelector("#done");
-
-// let dragElement = null;
-
-// const tasks = document.querySelectorAll(".task");
-
-// tasks.forEach((task) => {
-//     task.addEventListener("dragstart", () => {
-//         dragElement = task;
-//         task.classList.add("dragging");
-//     });
-
-//     task.addEventListener("dragend", () => {
-//         dragElement = null;
-//         task.classList.remove("dragging");
-//     });
-// });
-
-// const addDragEventsOnColumn = (column) => {
-
-//     column.addEventListener("dragover", (e) => {
-//         e.preventDefault(); // MUST HAVE
-//     });
-
-//     column.addEventListener("dragenter", () => {
-//         column.classList.add("hover-over");
-//     });
-
-//     column.addEventListener("dragleave", () => {
-//         column.classList.remove("hover-over");
-//     });
-
-//     column.addEventListener("drop", (e) => {
-//         e.preventDefault();
-
-//         if (dragElement) {
-//             column.appendChild(dragElement);
-//         }
-
-//         column.classList.remove("hover-over");
-//     });
-// };
-
-// addDragEventsOnColumn(todo);
-// addDragEventsOnColumn(progress);
-// addDragEventsOnColumn(done);
