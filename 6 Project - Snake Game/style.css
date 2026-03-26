@@ -70,6 +70,7 @@ section .infos{
     /* width: 80px;
     height: 80px; */
     border: 1px solid var(--border-primary-color);
+    border-radius: 20%;
 }
 .fill{
     background-color: var(--bg-fill-color);
