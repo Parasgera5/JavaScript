@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary-color);
+    color: var(--text-primary-color);
+}
+
+section {
+    display: flex;
+    gap: var(--gutter-lg);
+    padding: var(--padding-2xl);
+    height: 100vh;
+}
+
+.left {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-lg);
+    align-items: center;
+}
+
+.right {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gutter-md);
+    background-color: var(--bg-secondary-color);
+    padding: var(--padding-lg);
+    border-radius: var(--border-radius-lg);
+}
+
+.top {
+    display: flex;
+    gap: var(--gutter-md);
+    align-items: center;
+}
+
+.btn {
+    padding: var(--padding-sm) var(--padding-lg);
+    border-radius: var(--border-radius-md);
+    background-color: var(--bg-active-color);
+    color: var(--text-primary-color);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#reset-btn { background-color: var(--danger-color); }
+#download-btn { background-color: var(--success-color); }
+
+.bottom {
+    width: 100%;
+    background-color: var(--bg-secondary-color);
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    aspect-ratio: 5/3;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Limit the canvas so it doesn't break the UI */
+canvas {
+    max-width: 90%;
+    max-height: 80vh;
+}
+
+.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0.6;
+}
+
+.placeholder i {
+    font-size: 10rem;
+}
+
+.filter {
+    margin-bottom: var(--gutter-md);
+}
+
+input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+}
+
+.presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gutter-sm);
+}
+
+.preset-btn {
+    /* Reusing some of your .btn styles but making them smaller */
+    padding: var(--padding-sm) var(--padding-md);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--bg-active-color);
+    color: var(--text-primary-color);
+    cursor: pointer;
+    border: none;
+    font-size: var(--font-size-sm);
+}
+
+.preset-btn:hover {
+    background-color: var(--bg-secondary-color);
+    border: 1px solid var(--text-active-color);
+}

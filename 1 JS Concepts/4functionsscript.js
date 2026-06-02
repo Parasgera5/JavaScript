@@ -16,18 +16,18 @@
 //     console.log(bolo);
 // }
 // hello("Hello World");
-// let func = (msg) => {
-//     console.log(msg);
-// }
+let func = (msg) => {
+    console.log(msg);
+}
 // func("Arrow Function with parameter");
 
 // ye call back ka code hai
-// let functionAsParameter = (func) => {
-//     console.log("Function as parameter");
-//     func("Message from function parameter");
-// }
-// functionAsParameter(func, func("Arrow Function with parameter"));
-// // functionAsParameter(func);
+let functionAsParameter = (func) => {
+    console.log("Function as parameter");
+    func("Message from function parameter");
+}
+functionAsParameter(func, func("Arrow Function with parameter"));
+functionAsParameter(func);
 
 // let f = function () {
 //     console.log("Function expression");
@@ -55,15 +55,15 @@
 //     console.log("Arrow or fat arrow function Function. This function uses the arrow syntax.");
 // }
 
-// let callbackFunction = (message) =>{
-//     console.log(message);
-// }
+let callbackFunction = (message) =>{
+    console.log(message);
+}
 
-// let callback = (callback) => {
-//     console.log("This function is passed as a parameter to another function.");
-//     callback("callback is called from function parameter");
-// }
-// callback(callbackFunction);
+let callback = (callback) => {
+    console.log("This function is passed as a parameter to another function.");
+    callback("callback is called from function parameter");
+}
+callback(callbackFunction);
 
 
 // let a = (animal) => {
@@ -122,15 +122,15 @@
 
 
 
-// let a = (val) => {
-//     if(val == undefined){
-//         return "bsdk argument toh dede"
-//     }
-//     return val;
-// }
+let a = (val) => {
+    if(val == undefined){
+        return "bsdk argument toh dede"
+    }
+    return val;
+}
 
-// console.log(a());
-// console.log(a("hello"));
+console.log(a());
+console.log(a("hello"));
 
 // let a = (val) => {
 //     if(val == undefined){
@@ -161,20 +161,20 @@
 //     console.log("Hello");
 // })
 
-// let b = function(){ // b is higher order function
-//     return function(){
-//         console.log("Hello");
-//     }
-// }
-// console.log(b()());
-// console.log(b());
-// let c = b();
-// console.log(c());
-// b()()
+let b = function(){ // b is higher order function
+    return function(){
+        console.log("Hello");
+    }
+}
+console.log(b()());
+console.log(b());
+let c = b();
+console.log(c());
+b()()
 
 // Pure vs impure functions
 // aisa function jo ki bahar ki value ko na badle wo hai pure function -> pure function
-// aisa function jo ki bahar ki value ko badle wo hai pure function ya kehlo jiska side effect ho -> impure function
+// aisa function jo ki bahar ki value ko badle wo hai impure function ya kehlo jiska side effect ho -> impure function
 
 // let a = 12;
 // function print(){

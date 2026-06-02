@@ -1,18 +1,18 @@
-// setTimeout(() => {
-//     console.log("Hello, World!");
-// }, 1000);
-// console.log("Outer Hello, World!");
+setTimeout(() => {
+    console.log("Hello, World!");
+}, 1000);
+console.log("Outer Hello, World!");
 
-// setInterval(() => {
-//     console.log("Hello, World!");
-// }, 1000);
-// console.log("Outer Hello, World!");
+setInterval(() => {
+    console.log("Hello, World!");
+}, 1000);
+console.log("Outer Hello, World!");
 
-// setInterval(() => {
-//     setTimeout(() => {
-//         console.log("Hello, World!");
-//     }, 2000);
-// }, 1000);
+setInterval(() => {
+    setTimeout(() => {
+        console.log("Hello, World!");
+    }, 2000);
+}, 1000);
 
 // setTimeout(() => {
 //     setInterval(() => {

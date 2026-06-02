@@ -59,6 +59,9 @@
 // ab let and const bhi hoised hote hai but jaise var ke case mein undefined milta tha top pe yaha pe no value toh isliye let and const reference error dete hai
 
 // console.log(a);
+// var a = 12;
+
+// console.log(a);
 // let a = 12;
 
 // console.log(b);

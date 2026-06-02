@@ -56,14 +56,14 @@
 // filter har ek bande pe jata hai or condition lagata hai or jo satisfy karte hai wo naya array bana ke deta hai
 // reduce pura array leta hai or ek single value return karta hai
 
-// let a = [1, 2, 3, 4, 5];
-// a.forEach(function(val, index, array){
-//     console.log(`value is ${val}, index is ${index}, array is ${array}`); 
-// });
+let a = [1, 2, 3, 4, 5];
+a.forEach(function(val, index, array){
+    console.log(`value is ${val}, index is ${index}, array is ${array}`); 
+});
 
-// a.forEach((a) => {
-//     console.log(a);
-// })
+a.forEach((a) => {
+    console.log(a);
+})
 
 // forEach mein array ke har ek value ke liye function ke andar likha hua code chalta rahega baar baar
 // forEach kuch return nahi karta hai
@@ -169,11 +169,11 @@
 // });
 // console.log(c); // true -> because all elements satisfy the condition
 // agar ek value bhi condition satisfy nahi karti toh false return karta hai agar ek bhi kari toh at a time true return karta hai.
-// let ar = [2, 4, 6, 8, 10, 11, 12];
-// let d = ar.some((val) => {
-//     return val % 2 === 1;
-// });
-// console.log(d); // false -> because not all elements satisfy the condition
+let ar = [2, 4, 6, 8, 10, 11, 12];
+let d = ar.some((val) => {
+    return val % 2 === 1;
+});
+console.log(d); // true -> because only single element can decide the output if satisfying the condition
 
 // every -> agar array ke sabhi elements condition satisfy karte hai tabhi true return karta hai otherwise false 
 // let a = [2, 4, 6, 8, 10];
