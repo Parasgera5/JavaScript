@@ -29,7 +29,10 @@
 
 // let jo hai wo apne parent block mein kahi bhi use ho sakta hai matlab ki apne ghar mein kisi bhi kamre mein use ho sakta hai kyuyki wo apne maa baap ke ghar ka hi hissa hai
 
-// console.log(a);
+// console.log(a); undefined in case of var
+// var a = 12;
+
+// console.log(a); can not access a before initialisation in case of let
 // let a = 12;
 // its tdz -> temporal dead zone => utna area jitne mein js ko pata toh hai ki variable hai but wo usko access nahi kar sakta matlab uski value nahi de sakta.
 
